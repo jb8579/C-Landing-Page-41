@@ -1,8 +1,17 @@
 @media only screen and (max-width: 767px) {
     .age-top-bar > p {
-        font-size: 11px;
+        font-size: 10px;
         display: inline-block;
         gap: 4px;
+    }
+    .age-top-bar > p > img {
+        width: 18px;
+        height: auto;
+        position: relative;
+        top: 5px;
+    }
+    .age-top-bar {
+        padding: 4px 4px 6px 4px;
     }
     .container {
         width: 100%;
