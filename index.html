@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Tatts Lotto – Experience thrilling lottery draws and massive jackpots. Play online and check results instantly.">
+        <meta name="keywords" content="Tatts Lotto, online lottery, jackpot results, Australian lottery, lotto draws">
+        <meta name="author" content="tatts-lotto.au">
+        <title>Tatts Lotto – Play & Check Results Online</title>
+        <link rel="shortcut icon" href="images/fav-icon.png" type="image/x-icon">
+        <meta name="robots" content="index, follow">
+        <meta property="og:title" content="Tatts Lotto – Play, Win, and Check Results Online">
+        <meta property="og:description" content="Join Tatts Lotto for exciting lottery draws and life-changing jackpots. Play now and check your results online.">
+        <meta property="og:url" content="https://tatts-lotto.au">
+        <meta property="og:type" content="website">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/responsive.css">
+        <link rel="stylesheet" href="css/animate.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <div class="age-top-bar">
+                <p><img src="images/18+ logo.png" alt="18+ Logo"> This site is restricted to individuals aged 18 and above. Gambling can be addictive. Play responsibly and within your limits.</p>
+            </div>
+            <div class="nav-bar">
+                <div class="container">
+                    <div class="nav-bar-flex">
+                        <div class="nav-logo">
+                            <img src="images/tatts-logo.png" alt="Tatts Logo">
+                        </div>
+                        
+                        <div class="nav-btn">
+                            <button class="login-btn" onclick="openLoginPopup()">Login</button>
+                            <button class="register-btn" onclick="openRegisterPopup()">Register</button>
+                        </div>
+                        <div id="registerPopup" class="popup">
+                            <div class="popup-content">
+                                <h2>Register</h2>
+                                <span class="close-btn" onclick="closePopup()">&times;</span>
+                                <input type="text" id="firstName" placeholder="First Name" required>
+                                <input type="text" id="lastName" placeholder="Last Name" required>
+                                <input type="email" id="email" placeholder="Email" required>
+                                <input type="password" id="password" placeholder="Password" required>
+                                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                                <small>At least 8 characters, 1 uppercase letter, 1 number</small>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="terms" required>
+                                    <label for="terms">I confirm that I am 18 or older and agree to the <a href="#">Terms & Privacy Policy</a>.</label>
+                                </div>
+                                <button id="registerBtn">Confirm Register</button>
+                                <p class="form-p-bottom">Already have an account? <a href="#" id="loginLink">Login here</a></p>
+                            </div>
+                        </div>
+                        <div id="loginPopup" class="popup">
+                            <div class="popup-content">
+                                <h2>Login</h2>
+                                <span class="close-btn" onclick="closePopup()">&times;</span>
+                                <form id="loginForm">
+                                    <input type="email" id="loginEmail" placeholder="Email" required>
+                                    <input type="password" id="loginPassword" placeholder="Password" required>
+                                    <button id="loginBtn">Login</button>
+                                    <p class="form-p-bottom">Don't have an account? <a href="#" id="registerLinkFromLogin">Register here</a></p>
+                                </form>
+                            </div>
+                        </div>
+                        <style>
+                            .popup {
+                                display: none;
+                                position: fixed;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
+                                background: rgba(12, 12, 12, 0.884);
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                z-index: 999;
+                            }
+
+                            .popup-content {
+                                border-radius: 8px;
+                                background: radial-gradient(#0b5268, #201a1a);
+                                backdrop-filter: blur(25px);
+                                padding: 40px 30px;
+                                border-radius: 12px;
+                                width: 400px;
+                                text-align: center;
+                                color: white;
+                                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+                                position: relative;
+                            }
+
+                            .close-btn {
+                                position: absolute;
+                                top: 10px;
+                                right: 15px;
+                                font-size: 24px;
+                                cursor: pointer;
+                            }
+                            .popup-content > h2{
+                                font-size: 28px;
+                                font-weight: 700;
+                                padding: 0px 0px 15px 0px;
+                                background: linear-gradient(96deg, #FFF 4.93%, #999 96.48%);
+                                background-clip: text;
+                                -webkit-background-clip: text;
+                                -webkit-text-fill-color: transparent;
+                            }
+
+                            input {
+                                width: 100%;
+                                padding: 12px;
+                                margin: 8px 0;
+                                border-radius: 5px;
+                                background: #203f4c;
+                                color: white;
+                                outline: 0px;
+                                border: 0px;
+                                font-size: 15px;
+                                font-weight: 300;
+                            }
+
+                            input::placeholder {
+                                color: #b0b0b0; 
+                                opacity: 1; 
+                                font-style: italic; 
+                                font-weight: 400; 
+                            }
+                            .popup-content > small {
+                                font-size: 12px;
+                                text-align: left;
+                                font-weight: 300;
+                                color: #02c9cb;
+                            }
+                            .checkbox {
+                                display: flex;
+                                align-items: center;
+                                font-size: 13px;
+                                text-align: left;
+                                padding: 0px;
+                                color: #f5efef;
+                                padding: 8px 0px;
+                            }
+
+                            .checkbox input {
+                                margin-right: 8px;
+                                width: 30px;
+                                position: relative;
+                                top: -10px;
+                            }
+                            .checkbox > label > a{
+                                color: #FFF;
+                            }
+                            p.form-p-bottom{
+                                font-size: 14px;
+                                font-weight: 300;
+                                padding: 25px 0px 0px 0px;
+                                color: #ffffff;
+                            }
+                            p.form-p-bottom > a{
+                                color: #02c9cb;
+                            }
+                            .popup-content button {
+                                width: 100%;
+                                padding: 10px;
+                                border-radius: 5px;
+                                border: none;
+                                background: #0087A9;
+                                color: white;
+                                cursor: pointer;
+                                font-size: 16px;
+                                margin-top: 10px;
+                            }
+
+                            .popup-content button:hover {
+                                background: #036d88;
+                            }
+
+                            .popup-content button#loginBtn {
+                                background: #0087A9;
+                            }
+
+                            .popup-content button#loginBtn:hover {
+                                background: #036d88;
+                            }
+                            
+                            #registerPopup, #loginPopup {
+                                display: none;
+                            }
+
+                        </style>    
+                        <script>
+                            window.onload = function() {
+                            };
+
+                            // Open Register Popup
+                            function openRegisterPopup() {
+                                document.getElementById("registerPopup").style.display = "flex";
+                                document.getElementById("loginPopup").style.display = "none";
+                            }
+
+                            // Open Login Popup
+                            function openLoginPopup() {
+                                document.getElementById("loginPopup").style.display = "flex";
+                                document.getElementById("registerPopup").style.display = "none"; 
+                            }
+
+                            // Close the popup (for both login and register)
+                            function closePopup() {
+                                document.getElementById("registerPopup").style.display = "none";
+                                document.getElementById("loginPopup").style.display = "none";
+                            }
+
+                            // Registration form validation
+                            document.getElementById("registerBtn").addEventListener("click", function (e) {
+                                e.preventDefault(); // Prevent form submission
+
+                                const firstName = document.getElementById("firstName").value.trim();
+                                const lastName = document.getElementById("lastName").value.trim();
+                                const email = document.getElementById("email").value.trim();
+                                const password = document.getElementById("password").value;
+                                const confirmPassword = document.getElementById("confirmPassword").value;
+                                const termsChecked = document.getElementById("terms").checked;
+
+                                // Validate form fields
+                                if (!firstName || !lastName || !email || !password || !confirmPassword) {
+                                    alert("All fields are required.");
+                                    return;
+                                }
+
+                                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                                if (!emailPattern.test(email)) {
+                                    alert("Please enter a valid email.");
+                                    return;
+                                }
+
+                                if (password.length < 8 || !/[A-Z]/.test(password) || !/[0-9]/.test(password)) {
+                                    alert("Password must be at least 8 characters, include an uppercase letter and a number.");
+                                    return;
+                                }
+
+                                if (password !== confirmPassword) {
+                                    alert("Passwords do not match.");
+                                    return;
+                                }
+
+                                if (!termsChecked) {
+                                    alert("You must agree to the terms & conditions.");
+                                    return;
+                                }
+
+                                alert("Registration Successful!");
+                                closePopup();
+                            });
+
+                            // Login form validation
+                            document.getElementById("loginBtn").addEventListener("click", function (e) {
+                                e.preventDefault(); 
+
+                                const email = document.getElementById("loginEmail").value.trim();
+                                const password = document.getElementById("loginPassword").value;
+
+                                // Validate login fields
+                                if (!email || !password) {
+                                    alert("Please fill in both fields.");
+                                    return;
+                                }
+
+                                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                                if (!emailPattern.test(email)) {
+                                    alert("Please enter a valid email.");
+                                    return;
+                                }
+
+                                alert("Login Successful!");
+                                closePopup();
+                            });
+
+                            // Switch to Register popup from Login popup
+                            document.getElementById("registerLinkFromLogin").addEventListener("click", function () {
+                                closePopup();
+                                openRegisterPopup();
+                            });
+
+                            // Switch to Login popup from Register popup
+                            document.getElementById("loginLink").addEventListener("click", function () {
+                                closePopup();
+                                openLoginPopup();
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <section class="hero-section">
+                <div class="hero-flex">
+                    <div class="hero-context-area wow zoomIn" data-show="true" style="animation-name: zoomIn; animation-duration: 2500ms; animation-timing-function: ease; animation-delay: 0ms; animation-direction: normal; animation-fill-mode: both;">
+                        <h1>Experience <span>Tatts<span>Lotto</span></span> Online</h1>
+                        <p>Step into our unique Game Key Challenges, where you can conquer exciting gaming feats and earn amazing rewards.</p>
+                        <div class="time-count-div">
+                            <div class="time-count-flex">
+                                <div class="time-count-text">
+                                    <h2>Time Until Next Draw</h2>
+                                </div>
+                                <div class="time-count-start-flex">
+                                    <div class="time-count-start">
+                                        <h3 id="days">05</h3>
+                                        <p>days</p>
+                                    </div>
+                                    <div class="time-count-start">
+                                        <h3 id="hours">01</h3>
+                                        <p>hours</p>
+                                    </div>
+                                    <div class="time-count-start">
+                                        <h3 id="minutes">49</h3>
+                                        <p>minutes</p>
+                                    </div>
+                                    <div class="time-count-start">
+                                        <h3 id="seconds">18</h3>
+                                        <p>seconds</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-img">
+                        <img src="images/tatts-lotto-thumnail.png" alt="">
+                    </div>
+                </div>
+            </section>
+            <section class="about-section">
+                <div class="container">
+                    <div class="about-context wow zoomIn" data-show="true" style="animation-name: zoomIn; animation-duration: 2500ms; animation-timing-function: ease; animation-delay: 0ms; animation-direction: normal; animation-fill-mode: both;">
+                        <h2>TattsLotto - Australia's Premier Online Lottery</h2>
+                        <p>Since 1972, TattsLotto has been one of the most beloved lotteries in Australia, attracting players from all over the country. Players select 6 numbers from 1 to 45, and to win the jackpot, all 6 numbers must match. There are also prizes for matching 5, 4, or 3 numbers, as well as additional prizes for bonus numbers. The jackpot typically reaches millions and continues to grow if it's not won across multiple draws. TattsLotto offers exciting rewards, including Division 1 prizes, for lucky participants who match various combinations of numbers.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="draw-section">
+                <div class="container">
+                    <div class="draw-top-flex">
+                        <div class="draw-white-bg wow fadeInLeft" data-show="true" style="animation-name: fadeInLeft; animation-duration: 2500ms; animation-timing-function: ease; animation-delay: 0ms; animation-direction: normal; animation-fill-mode: both;">
+                            <div class="draw-white-bg-context">
+                                <h3>Be a Part of the Winning Team</h3>
+                                <p>Thousands of players have already made their dreams come true with Tatts Lotto. Will you be the next lucky winner?</p>
+                                <button class="draw-white-btn">Register Now</button>
+                            </div>
+                        </div>
+                        <div class="draw-blue-bg wow fadeInRight" data-show="true" style="animation-name: fadeInRight; animation-duration: 2500ms; animation-timing-function: ease; animation-delay: 0ms; animation-direction: normal; animation-fill-mode: both;">
+                            <div class="draw-blue-bg-flex">
+                                <div class="draw-blue-bg-left">
+                                    <h3>Upcoming Draw This Saturday – Don't Miss Out!</h3>
+                                    <p>The next draw is this Saturday. Make sure you're in for a chance to win!</p>
+                                    <button class="draw-blue-btn">Register Now</button>
+                                </div>
+                                <div class="draw-blue-bg-right">
+                                    <h3><span>$</span>5</h3>
+                                    <p>Million</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="draw-flex">
+                        <div class="draw-area wow fadeInUp" data-show="true" style="animation-name: fadeInUp; animation-duration: 2500ms; animation-timing-function: ease; animation-delay: 0ms; animation-direction: normal; animation-fill-mode: both;">
+                            <div class="draw-table-title">
+                                <h3>Latest Lottery Results</h3>
+                            </div>
+                            <div class="draw-table-flex">
+                                <div class="number-list-title">
+                                    <p>Game</p>
+                                </div>
+                                <div class="number-list-title">
+                                    <p>Draw Date</p>
+                                </div>
+                                <div class="number-list-title w-n">
+                                    <p>Winning Numbers</p>
+                                </div>
+                            </div>
+                            <div class="draw-table-start">
+                                <div class="draw-winner-table-grid">
+                                    <div class="winner-brand">
+                                        <h4>Silver Rush</h4>
+                                    </div>
+                                    <div class="draw-date">
+                                        <p>22/04/2025</p>
+                                    </div>
+                                    <div class="draw-number">
+                                        <span>3</span>
+                                        <span>14</span>
+                                        <span class="number-green-bg">21</span>
+                                        <span class="number-green-bg">37</span>
+                                        <span class="number-green-bg">5</span>
+                                        <span>40</span>
+                                        <span>18</span>
+                                    </div>
+                                </div>
+                                <div class="draw-winner-table-grid">
+                                    <div class="winner-brand">
+                                        <h4>Grand Fortune</h4>
+                                    </div>
+                                    <div class="draw-date">
+                                        <p>18/04/2025</p>
+                                    </div>
+                                    <div class="draw-number">
+                                        <span>8</span><span>16</span><span class="number-green-bg">24</span><span>33</span>
+                                        <span class="number-green-bg">9</span><span class="number-green-bg">28</span><span>11</span>
+                                    </div>
+                                </div>
+                                <div class="draw-winner-table-grid">
+                                    <div class="winner-brand">
+                                        <h4>Ultimate Jackpot</h4>
+                                    </div>
+                                    <div class="draw-date">
+                                        <p>12/04/2025</p>
+                                    </div>
+                                    <div class="draw-number">
+                                        <span>4</span><span>17</span><span>25</span><span class="number-green-bg">36</span>
+                                        <span class="number-green-bg">8</span><span>19</span><span>32</span>
+                                    </div>
+                                </div>
+                                <div class="draw-winner-table-grid">
+                                    <div class="winner-brand">
+                                        <h4>Gold Quest</h4>
+                                    </div>
+                                    <div class="draw-date">
+                                        <p>05/04/2025</p>
+                                    </div>
+                                    <div class="draw-number">
+                                        <span>2</span><span class="number-green-bg">13</span><span class="number-green-bg">22</span><span>38</span>
+                                        <span>7</span><span>29</span><span>14</span>
+                                    </div>
+                                </div>
+                                <div class="draw-winner-table-grid">
+                                    <div class="winner-brand">
+                                        <h4>Star Vault</h4>
+                                    </div>
+                                    <div class="draw-date">
+                                        <p>01/04/2025</p>
+                                    </div>
+                                    <div class="draw-number">
+                                        <span class="number-green-bg">6</span>
+                                        <span>15</span>
+                                        <span>28</span>
+                                        <span>34</span>
+                                        <span>10</span>
+                                        <span class="number-green-bg">42</span>
+                                        <span class="number-green-bg">19</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="draw-winner-area wow fadeInUp" data-show="true" style="animation-name: fadeInUp; animation-duration: 2500ms; animation-timing-function: ease; animation-delay: 0ms; animation-direction: normal; animation-fill-mode: both;">
+                            <div class="draw-winner-title">
+                                <h3>Top Winners</h3>
+                            </div>
+                            <div class="winner-list">
+                                <div class="winner-list-table">
+                                    <h4>Silver Rush</h4>
+                                    <p>Draw Date: 16/04/2025</p>
+                                    <small>$750,000</small>
+                                </div>
+                                <div class="winner-list-table">
+                                    <h4>Grand Fortune</h4>
+                                    <p>Draw Date: 10/04/2025</p>
+                                    <small>$950,000</small>
+                                </div>
+                                <div class="winner-list-table">
+                                    <h4>Ultimate Jackpot</h4>
+                                    <p>Draw Date: 02/04/2025</p>
+                                    <small>$1,200,000</small>
+                                </div>
+                                <div class="winner-list-table">
+                                    <h4>Gold Quest</h4>
+                                    <p>Draw Date: 25/03/2025</p>
+                                    <small>$600,000</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="feedback-section">
+                <div class="wow zoomIn" data-show="true" style="animation-name: zoomIn; animation-duration: 2500ms; animation-timing-function: ease; animation-delay: 0ms; animation-direction: normal; animation-fill-mode: both;">
+                    <h2 class="feed-back-title">What Our Players Are Saying</h2>
+                    <div class="container">
+                        <div class="feedback-grid">
+                            <div class="feedback-card">
+                                <p>"Tatts Lotto is such an exciting and easy game to play! I love that I can play anytime, anywhere. While I've had some small wins, I'm still chasing that life-changing jackpot!"</p>
+                                <h3>Jack Mason</h3>
+                                <img src="images/user-img-1.png" alt="User Image" class="user-img">
+                            </div>
+
+                            <div class="feedback-card center-card">
+                                <p>"I’ve had a great experience with Tatts Lotto! The website is so user-friendly, and I can buy tickets quickly. I’ve won a few smaller prizes, and I’m always excited for the next draw!"</p>
+                                <h3>Emma Rivers</h3>
+                                <img src="images/user-img-2.png" alt="User Image" class="user-img">
+                            </div>
+
+                            <div class="feedback-card">
+                                <p>"Tatts Lotto makes it easy and fun to play the lottery online. The platform is straightforward, and I can buy tickets from anywhere. I’m always hoping for that big win!"</p>
+                                <h3>Sam Lee</h3>
+                                <img src="images/user-img-3.png" alt="User Image" class="user-img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="faq-section">
+                <div class="container wow zoomIn" data-show="true" style="animation-name: zoomIn; animation-duration: 2500ms; animation-timing-function: ease; animation-delay: 0ms; animation-direction: normal; animation-fill-mode: both;">
+                    <div class="faq-h2">
+                        <h2>Frequently Asked Questions</h2>
+                    </div>
+                    <div class="faq-area">
+                        <div class="faq-item active">
+                            <button class="faq-question">What is your return policy? <span class="faq-icon">+</span></button>
+                            <div class="faq-answer" style="display: block;">We do not have a traditional return policy for lottery tickets. However, if you encounter any issues with your purchase, please contact our support team for assistance.</div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question">How can I track my lottery ticket purchase? <span class="faq-icon">+</span></button>
+                            <div class="faq-answer">Once your purchase is confirmed, you’ll receive a ticket number and an email confirmation. You can check your ticket's status directly through your account dashboard.</div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question">Do you offer international shipping? <span class="faq-icon">+</span></button>
+                            <div class="faq-answer">Yes, we offer international access to our games. However, please check the local regulations in your country regarding online gambling and lottery participation.</div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question">How do I claim my winnings? <span class="faq-icon">+</span></button>
+                            <div class="faq-answer">Winnings can be claimed through your account once the draw results are published. For larger prizes, we will contact you directly with instructions on how to proceed with the claim process.</div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question">Can I play the lottery from my mobile device? <span class="faq-icon">+</span></button>
+                            <div class="faq-answer">Yes! Our platform is mobile-friendly, allowing you to buy tickets and check results directly from your smartphone or tablet.</div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question">Is there an age restriction to participate? <span class="faq-icon">+</span></button>
+                            <div class="faq-answer">Yes, you must be at least 18 years old to participate in any of our lottery games. Please gamble responsibly.</div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question">How are the lottery draws conducted? <span class="faq-icon">+</span></button>
+                            <div class="faq-answer">Our draws are conducted using a certified random number generator to ensure fairness. All draw results are audited by third-party experts for transparency.</div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question">Can I purchase multiple tickets for a single draw? <span class="faq-icon">+</span></button>
+                            <div class="faq-answer">Yes, you can buy as many tickets as you like for a single draw. The more tickets you purchase, the higher your chances of winning.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>            
+        </main>
+        <footer>
+            <div class="container wow zoomIn" data-show="true" style="animation-name: zoomIn; animation-duration: 2500ms; animation-timing-function: ease; animation-delay: 0ms; animation-direction: normal; animation-fill-mode: both;">
+                <div class="footer-flex">
+                    <div class="footer-context">
+                        <p>Think carefully about your choices. Gamble responsibly. If you need help, call Gambling Help on 1800 858 858. We are committed to promoting responsible gambling. Persons under the age of 18 are strictly prohibited from participating in any gambling activities.</p>
+                        <ul>
+                            <li>
+                                <a href="/">Home</a>
+                            </li>
+                            <li>
+                                <a href="privacy-policy.html">Privacy Policy</a>
+                            </li>
+                            <li>
+                                <a href="terms-and-conditions.html">Terms and Conditions</a>
+                            </li>
+                            <li>
+                                <a href="cookie-policy.html">Cookies Policy</a>
+                            </li>
+                            <li>
+                                <a href="mailto:tattslottosupport@gamil.com">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-images">
+                        <ul>
+                            <li>
+                                <a>
+                                    <img src="images/18logo.png" class="f-1">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.gambleaware.org/" target="_blank">
+                                    <img src="images/gambleaware-logo.png" alt="" class="f-2">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://gamblershelpsouthern.org.au/" target="_blank">
+                                    <img src="images/gambler-logo.png" alt="" class="f-3"> 
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.vgccc.vic.gov.au/" target="_blank">
+                                    <img src="images/victorialogo.png" alt="" class="f-4">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="copy-right">
+                    <p>© 2025 Tatts Lotto | All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+        <script src="js/wow.min.js"></script>
+        <script>
+            // Define the countdown duration (5 days, 1 hour, 49 minutes, 18 seconds)
+            const initialDuration = (5 * 24 * 60 * 60) + (1 * 60 * 60) + (49 * 60) + 18; // in seconds
+        
+            // Get the stored start time from localStorage
+            let startTime = localStorage.getItem("countdownStartTime");
+        
+            // If no start time exists, set it
+            if (!startTime) {
+                startTime = Date.now();
+                localStorage.setItem("countdownStartTime", startTime);
+            } else {
+                startTime = parseInt(startTime);
+            }
+        
+            function updateTimer() {
+                // Calculate elapsed time
+                const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+                
+                // Calculate the remaining time
+                let remainingTime = initialDuration - elapsedTime;
+                
+                // If the countdown reaches zero, restart it
+                if (remainingTime <= 0) {
+                    startTime = Date.now();
+                    localStorage.setItem("countdownStartTime", startTime);
+                    remainingTime = initialDuration;
+                }
+        
+                // Convert remaining time into days, hours, minutes, and seconds
+                const days = Math.floor(remainingTime / (24 * 60 * 60));
+                const hours = Math.floor((remainingTime % (24 * 60 * 60)) / (60 * 60));
+                const minutes = Math.floor((remainingTime % (60 * 60)) / 60);
+                const seconds = remainingTime % 60;
+        
+                // Update the HTML elements
+                document.getElementById("days").innerText = String(days).padStart(2, "0");
+                document.getElementById("hours").innerText = String(hours).padStart(2, "0");
+                document.getElementById("minutes").innerText = String(minutes).padStart(2, "0");
+                document.getElementById("seconds").innerText = String(seconds).padStart(2, "0");
+            }
+        
+            setInterval(updateTimer, 1000);
+        
+            updateTimer();
+        </script>
+         <script>
+            document.querySelectorAll('.faq-question').forEach(button => {
+                button.addEventListener('click', () => {
+                    document.querySelectorAll('.faq-item').forEach(item => {
+                        item.classList.remove('active');
+                        item.querySelector('.faq-answer').style.display = 'none';
+                        item.querySelector('.faq-icon').style.transform = 'rotate(0deg)';
+                    });
+                    
+                    const faqItem = button.parentElement;
+                    faqItem.classList.add('active');
+                    faqItem.querySelector('.faq-answer').style.display = 'block';
+                    faqItem.querySelector('.faq-icon').style.transform = 'rotate(45deg)';
+                });
+            });
+        </script>
+        <script>
+            new WOW().init();
+        </script>
+    </body>
+</html>
