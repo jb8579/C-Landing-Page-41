@@ -19,6 +19,260 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+        <!-- ====================== Cookie PopUp Start ========================== -->
+		<div class="cookie-overlay show-overlay"></div>
+		<div class="cookie-overlay-2 show-overlay-2"></div>
+		<div class="cookie-popup" id="cookiePopup">
+			<div class="cookie-description">
+				<div class="cookie-text">
+					<h3>Welcome!</h3>
+					<p>Please confirm your age  before visiting the website.</p>
+				</div>
+				<div class="cookie-btn">
+					<div class="cookie-double-btn">
+						<button onclick="acceptCookies()" class="cookie-accept"> I'm over 18</button>
+						<button onclick="acceptCookies()" class="cookie-accept btn-2"> I'm under 18</button>
+					</div>
+				</div>
+				<div class="cookie-text-2">
+					<p>By visiting this site, you agree to follow our Term of Use and Privacy Policy.</p>
+				</div>
+			</div>
+		</div>
+
+
+      	<style>
+		/* ---------------------------------- 
+			Cookie Popup CSS Start 
+		------------------------------------- */
+		.cookie-popup {
+            display: none;
+            position: fixed;
+            left: 0;
+            right: 0;
+            background: radial-gradient(#074456, #0b7393);
+            padding: 30px 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            color: #ffffff;
+            font-family: "Poppins", sans-serif;
+        }
+
+		.cookie-popup.show {
+            display: block;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 45px 40px 55px 40px;
+            border-radius: 12px;
+            font-family: "Poppins", sans-serif;
+        }
+
+		.cookie-text > img {
+			width: 90px;
+			margin-bottom: 15px;
+		}
+
+		.cookie-text > h3 {
+            color: #ffffff;
+            font-size: 30px;
+            font-weight: 600;
+            margin: 8px 0px 8px 0px;
+        }
+
+		.cookie-text > p {
+            font-size: 15px;
+            line-height: 23px;
+            font-style: normal;
+            font-weight: 400;
+            margin: 0px 0px 25px 0px;
+            color: #ebebeb;
+            font-family: "Poppins", sans-serif;
+            letter-spacing: 0.2px;
+        }
+
+		.cookie-text-2 > p {
+            font-size: 13px;
+            line-height: 22px;
+            font-style: normal;
+            font-weight: 400;
+            margin: 25px 0px 0px 0px;
+            color: #cecece;
+            font-family: "Poppins", sans-serif;
+            letter-spacing: 0.2px;
+        }
+
+        .cookie-double-btn {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin: 35px 0px;
+        }
+
+		.cookie-double-btn button {
+            font-size: 16px;
+            padding: 12px 8px;
+            font-weight: 400;
+            cursor: pointer;
+            user-select: none;
+            transition-duration: 0.2s;
+            transition-timing-function: ease-in-out;
+            outline: 0px;
+            background: #1ebdef;
+            color: #ffffff;
+            border: none;
+            width: 100%;
+            border-radius: 54px;
+        }
+
+        button.cookie-accept.btn-2 {
+            background: #a3def14f;
+        }
+
+		button.cookie-accept:hover {
+			opacity: .8;
+		}
+
+		.cookie-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(#00000052, #0000009c);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            z-index: 999;
+            display: none;
+        }
+
+		.cookie-overlay-2 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(#000000b0, #000000a8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 999;
+            display: none;
+        }
+
+		.show-overlay {
+			display: block;
+		}
+
+		.show-overlay-2 {
+			display: block;
+		}
+
+
+		@media only screen and (max-width: 600px) and (min-width: 320px) {
+			.cookie-popup.show {
+                position: fixed;
+                top: 50%;
+                transform: translateY(-50%);
+                margin: 0px auto;
+                padding: 40px 25px;
+                max-width: 350px;
+            }
+
+			.cookie-double-btn button {
+                font-size: 15px;
+                padding: 13px;
+            }
+
+			.cookie-overlay{
+				display: none;
+			}
+
+			.cookie-text > h3 {
+				font-size: 25px;
+			}
+
+			.cookie-text > p {
+				font-size: 15px;
+			}
+		}
+
+		@media only screen and (max-width: 850px) and (min-width: 768px) {
+			.cookie-popup.show {
+				margin: 0 auto;
+			}
+
+			.cookie-overlay-2{
+				display: none;
+			}
+		}
+
+		@media only screen and (min-width: 1024px) {
+			.cookie-overlay-2 {
+				display: none;
+			}
+		}
+
+		/* ------------------------------------ 
+		Cookie Popup CSS End 
+		--------------------------------------- */
+		</style>
+
+
+      	<script>
+			// ------------------- Cookie Popup JS Start -----------------------
+			document.addEventListener("DOMContentLoaded", function () {
+			if (!getCookie("acceptedCookies")) {
+				// Load background image of the popup first
+				document.querySelector(".cookie-overlay").classList.add("show-overlay");
+				document.querySelector(".cookie-overlay-2").classList.add("show-overlay-2");
+				document.getElementById("cookiePopup").classList.add("show");
+			} else {
+				// If cookies have already been accepted, remove the popup and overlay
+				document.querySelector(".cookie-overlay").classList.remove("show-overlay");
+				document.querySelector(".cookie-overlay-2").classList.remove("show-overlay-2");
+				document.getElementById("cookiePopup").classList.remove("show");
+			}
+			});
+
+			function acceptCookies() {
+				document.getElementById("cookiePopup").classList.remove("show");
+				document.querySelector(".cookie-overlay").classList.remove("show-overlay");
+				document.querySelector(".cookie-overlay-2").classList.remove("show-overlay-2");
+				setCookie("acceptedCookies", true, 30);
+
+				// Load content after accepting cookies
+				setTimeout(function () {
+					console.log("Content uploaded after 3 seconds");
+					// Add your code here to load website images and content
+				}, 3000);
+			}
+
+			function setCookie(name, value, days) {
+				var expires = "";
+				if (days) {
+					var date = new Date();
+					date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+					expires = "; expires=" + date.toUTCString();
+				}
+				document.cookie = name + "=" + (value || "") + expires + "; path=/";
+			}
+
+         	function getCookie(name) {
+				var nameEQ = name + "=";
+				var ca = document.cookie.split(';');
+					for (var i = 0; i < ca.length; i++) {
+						var c = ca[i];
+						while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+						if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+					}
+				return null;
+         	}
+         	// ------------------- Cookie Popup JS End -----------------------
+		</script>
+		<!-- ==================== Cookie PopUp End ============================== -->
     </head>
     <body>
         <header>
@@ -571,7 +825,7 @@
                                 <a href="cookie-policy.html">Cookies Policy</a>
                             </li>
                             <li>
-                                <a href="mailto:tattslottosupport@gamil.com">Contact</a>
+                                <a href="/cdn-cgi/l/email-protection#e195809595928d8e95958e929491918e9395a186808c888dcf828e8c">Contact</a>
                             </li>
                         </ul>
                     </div>
@@ -601,11 +855,11 @@
                     </div>
                 </div>
                 <div class="copy-right">
-                    <p>© 2025 Tatts Lotto | All Rights Reserved.</p>
+                    <p>© 2025 tournamentcup.com by Tabcorp Holdings Limited (ABN 66 063 780 709) - License No. 213800OCCFUN67NEY278| All Rights Reserved.</p>
                 </div>
             </div>
         </footer>
-        <script src="js/wow.min.js"></script>
+        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/wow.min.js"></script>
         <script>
             // Define the countdown duration (5 days, 1 hour, 49 minutes, 18 seconds)
             const initialDuration = (5 * 24 * 60 * 60) + (1 * 60 * 60) + (49 * 60) + 18; // in seconds
